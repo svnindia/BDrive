@@ -11,10 +11,15 @@ BrowserDrive
 * List folders to include the counts of files in each folder and its subfolders.
 
 # To Deploy
+
 `git clone https://github.com/svnindia/BDrive.git` to clone the repo
+
 `npm i` to install all packages
+
 `npm start` to start the server
+
 `npm test` to run the mocha unit test
 
-#Postman
+# Postman
+
 BDrive.postman_collection.json can be used to test with Postman tool
