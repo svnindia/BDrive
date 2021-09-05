@@ -3,5 +3,5 @@ module.exports = {
     url: 'mongodb://localhost:27017/',
     dbname: 'bdrive'
   },
-  perPage: 1
+  perPage: 10
 }

@@ -2,7 +2,12 @@ const mongoose = require('./Connect');
 const BaseObject = require('./BaseObject');
 
 const FolderSchema = mongoose.Schema({
-  totalFiles: Number,
+  allFolders: [mongoose.Schema.Types.ObjectId],
+  totalFiles: {
+    type: Number,
+    default: 0
+  },
 });
-const FolderModel = BaseObject.discriminator('folder', FolderSchema);
+
+const FolderModel = BaseObject.discriminator('folders', FolderSchema);
 module.exports = FolderModel

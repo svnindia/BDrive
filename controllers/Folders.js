@@ -3,6 +3,7 @@ const { perPage } = require('../config/settings')
 const Folder = require('../models/Folders');
 const BaseObject = require('../models/BaseObject');
 const { validObjectId } = require('./validation')
+
 let ctrl = {
   async validate(req, res, next) {
     console.log(req.body)
@@ -28,20 +29,31 @@ let ctrl = {
     if (!req.newFolder) res.status(500).json({code: 5, message: 'Server Error' })
     const newFolder = Folder(req.newFolder)
     try {
+      if (newFolder.parentId) {
+        const parentObj = await BaseObject.findOne({ _id: newFolder.parentId });
+        if (parentObj) {
+          newFolder.allFolders = parentObj.allFolders;
+          if (!newFolder.allFolders) {
+            newFolder.allFolders = [];
+          }
+          newFolder.allFolders.push(newFolder.parentId)
+        }
+      }
+      
       const resFolder = await newFolder.save();
       res.status(200).json(resFolder);
     } catch(err) {
       next(err)
     }
-    return next();
+    // return next();
   },
   async get(req, res, next) {
     console.log(req.params, req.query)
     const arg = _.defaults(req.query, { page: 1 })
     const skip = (arg.page-1) * perPage;
-    const qry = { __t: 'folder' }
+    const qry = { __t: 'folders', archived: { value: false } }
     if (req.params.folderId) {
-      qry.parent = req.params.folderId;
+      qry.parentId = req.params.folderId;
     }
     const promiseArr = [
       Folder.find(qry).count(),

@@ -1,0 +1,198 @@
+{
+	"info": {
+		"_postman_id": "0af792d5-b147-4559-b9ba-2c4ca1f88681",
+		"name": "BDrive",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Folders",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Root Folder\",\n    \"driveId\": \"613493eafb13de318bf91ae6\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3000/v1/folders"
+			},
+			"response": []
+		},
+		{
+			"name": "Root Folder",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3000/v1/folders"
+			},
+			"response": []
+		},
+		{
+			"name": "Sub Folders ",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"root-1-a-i-1\",\n    \"driveId\": \"613493eafb13de318bf91ae6\",\n    \"parentId\": \"6134e8718f41a1fa1732f96e\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3000/v1/folders"
+			},
+			"response": []
+		},
+		{
+			"name": "Sub Folders",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3000/v1/folders/6134e8718f41a1fa1732f96e"
+			},
+			"response": []
+		},
+		{
+			"name": "Rename Folder",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"folder update\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3000/v1/folders/6134e8798f41a1fa1732f971"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Folder",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Three update\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3000/v1/folders/6134e8798f41a1fa1732f971"
+			},
+			"response": []
+		},
+		{
+			"name": "Files",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"test file-1\",\n    \"driveId\": \"613493eafb13de318bf91ae6\",\n    \"parentId\": \"6134e8608f41a1fa1732f968\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3000/v1/files"
+			},
+			"response": []
+		},
+		{
+			"name": "List Files",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"SAmple\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3000/v1/files/613493eafb13de318bf91ae6/6134aeb08b183debe7bf18fd"
+			},
+			"response": []
+		},
+		{
+			"name": "file rename",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"testfile23\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3000/v1/files/6134c43f03995d615057d29b"
+			},
+			"response": []
+		},
+		{
+			"name": "file delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Three update\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3000/v1/files/6134c43f03995d615057d29b"
+			},
+			"response": []
+		}
+	]
+}
